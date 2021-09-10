@@ -1,8 +1,8 @@
-from Game import *
+import Game
 from random import random
 
 class Destroyer:
-    def __init__(self, max_depth = 5):
+    def __init__(self, max_depth = 20):
         self.DIRECTION_ARR = [(1,1),(1,-1),(-1,1),(-1,-1)]
         self.max_depth = max_depth
 
@@ -35,7 +35,7 @@ class Destroyer:
         for i, j in self.DIRECTION_ARR:
             if (y + i, x + j) in captured: continue
             if board.isBlack(p.add(i, j)) and board.isEmpty(p.add(i*2,j*2)):
-                new_sequence_so_far = [Position(i.y, i.x) for i in sequence_so_far]
+                new_sequence_so_far = [Game.Position(i.y, i.x) for i in sequence_so_far]
                 new_sequence_so_far.append(p.add(i*2,j*2))
                 sequences += self.get_capture_sequence_man(board, piece, new_sequence_so_far)
         if len(sequences) == 0:
@@ -109,7 +109,7 @@ class Destroyer:
 
         f = 0
         for i in range(0, 10, 2):
-            if board.isEmpty(Position(0,i)):
+            if board.isEmpty(Game.Position(0,i)):
                 f += 1
         fw = -100000
 
@@ -209,3 +209,4 @@ class Destroyer:
                 best_val = val
                 best_move = move
         return best_move
+
