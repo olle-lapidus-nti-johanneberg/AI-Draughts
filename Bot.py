@@ -2,7 +2,7 @@ from Game import *
 from random import random
 
 class Destroyer:
-    def __init__(self, max_depth = 20):
+    def __init__(self, max_depth = 5):
         self.DIRECTION_ARR = [(1,1),(1,-1),(-1,1),(-1,-1)]
         self.max_depth = max_depth
 
